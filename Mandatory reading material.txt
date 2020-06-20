@@ -1,0 +1,24 @@
+Mandatory reading material for Object Oriented Design [Very methodological]
+https://www.educative.io/courses/grokking-the-object-oriented-design-interview <-- Go through all free reading material here
+https://www.geeksforgeeks.org/object-oriented-programming-oops-concept-in-java/
+https://www.youtube.com/watch?v=UI6lqHOVHic <-- Class Diagram (P1)
+https://www.youtube.com/watch?v=pCK6prSq8aw <-- Sequence Diagram (P2)
+https://www.youtube.com/watch?v=zid-MVo7M-E <-- Use Case Diagram (P1)
+https://realpython.com/python3-object-oriented-programming/ (python folks only)
+https://www.youtube.com/watch?v=ZOKLjJF54Xc (c++ folks only)
+https://www.youtube.com/watch?v=7GwptabrYyk (Java folks only)
+
+Mandatory reading material for System Design [Open ended]
+https://www.educative.io/courses/grokking-the-system-design-interview <-- Go through all free reading material here
+https://www.toptal.com/big-data/consistent-hashing
+https://towardsdatascience.com/cap-theorem-and-distributed-database-management-systems-5c2be977950e
+https://docs.microsoft.com/en-us/azure/architecture/best-practices/data-partitioning
+
+Additional Material
+https://github.com/checkcheckzz/system-design-interview
+https://docs.microsoft.com/en-us/azure/architecture/best-practices [Everything in this section is good material] (edited) 
+
+Cheatsheet
+https://github.com/in28minutes/java-cheat-sheet
+https://github.com/mortennobel/cpp-cheatsheet
+https://ehmatthes.github.io/pcc/cheatsheets/README.html

@@ -1,0 +1,70 @@
+### Mongod Baiscs
+
+- mongod --port 27018   #Mongodb Server (Open this terminal always do not close this)
+- mongo  --port 27018   # Shell to connect with the Mongod Server
+
+- show dbs (Database in system)
+
+- use database_name (use database for collections or create new database)
+
+- db.dropDatabase()
+
+- db.myCollection.drop()
+
+- db.flights.operation({}) [db-> reference to current database selected, flights-> collection, operation-> (CRUD) ,{} -> document(JSON)]
+
+
+
+## CRUD Operations in Mongodb
+
+	# CREATE(INSERT)
+		- insertOne(date, options)
+		- insertMany(data, options)		# insertMany( [ {} , {} , {} ])
+
+	# READ(FIND) -> NOT ALL DOCUMENTS AT ONCE -> JUST GIVE CURSOR WITH SOME DOCUMENTS
+		- find(filter,options)
+			- find({distance : {$gt: 900}}) 	# .toArray(), .pretty(), forEach((data) => {printjson(data)})
+
+		- findOne(filter,options)
+
+		- find().pretty()
+
+	# UPDATE
+		- update({old}, {new}) -> Overwrite everything
+		- updateOne(filter, data, options) 		# updateOne({distance: 12000}, {$set : { marker: "delete"} } )
+		- updateMany(filter, data, options) 	# updateMany( {}, {$set: {marker: "delete} } )
+		- replaceOne(filter, data, options)
+
+	# DELETE
+		- deleteOne(filter, options)  # need { key : value }
+		- deleteMany(filter, options) # Need Common criteria or column to delete - deleteMany({ marker : "delete"})
+
+
+
+## Projection - [Select name, age from table]
+	- find({}, {name: 1, _id:0, age: 0}).pretty()
+
+
+
+## $lookup -> (Merge Documents into 1 and return)
+	- aggregate( [ {$lookup: {from: "authors", localField: "authors", foreignField: "_id", as: "Createors"}} ])
+
+
+
+
+
+
+
+
+------------
+
+## Aggregation Queries
+
+	- mongoimport persons.json -d analytics -c persons --jsonArray
+	
+
+
+
+
+
+

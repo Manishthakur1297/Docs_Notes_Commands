@@ -1,0 +1,119 @@
+### Dynamic Content
+	<p> {Math.florr(Math.random()*30)} </p>
+
+### Working with props
+	-props allow you to pass data from a parent (wrapping) component to a child (embedded) component.
+
+	- Person.js
+		- const person = (props) => {
+
+			return <p> {props.name} , {props.age} 
+		}
+
+	- <Person name="Manish" age="22"> My Hobbyies </Person>
+
+### Understanding children prop
+	- <p> {props.children}
+
+
+### Understanding State
+	- Whilst props allow you to pass data down the component tree (and hence trigger an UI update), state is used to change the component, well, state from within. Changes to state also trigger an UI update.
+
+	class App extends component{
+	- state = {
+
+		persons: [
+			{ name: 'Max', age: 22},
+			{ name: 'MJ', age: 22}
+		]
+	}
+
+	switchNameHandle = () => {
+
+		// console.log('clicked');
+		this.setState()
+	}
+
+	}
+
+	<Person name={this.state.perspns[0].name} age={this.state.perspns[0].age} />
+
+	- Change the State(Name), triggers to render the DOM element again.
+
+	- <buttuon onClick={this.switchNameHandle}> Switch Name </button>
+
+	onClick= {this.switchNameHandle()}  => Immedialtely passed as the screen loads
+
+	onClick= {this.switchNameHandle}  => This occur when we click the button manually.
+
+### Manuplating The State
+	- this.setState({ persons : [ {}, {},...]})
+
+
+### useState() for State Manipulation (React Hooks)
+	- const app = props => {
+
+		const [peronState, setPersonState] = useState({persons:[], otherState:'test'})
+
+	}
+
+	const switchNameHandle = () => {
+
+	setPersonState({
+		persons :[...]
+	});
+	};
+
+	onClick = {switchNameHandle}
+
+	- MUST add all states while updating otherwise it overides the previous state
+	- 1 way - manually add in setPersonState
+	- 2 way ->
+
+	const [otherState, setOtherState] = useState({otherState : "test"}, "testString")
+
+
+### Stateless vs Stateful Components
+	props compoment(functional component) - stateless
+	class(state) -> stateful
+
+	- USE LESS STATES AND MORE FUNCTIONAL COMPONENTS
+
+
+### Passing Method references between Components
+	<Person click={this.switchNameHandle.bind(this, 'Manish1')} />
+
+
+### Two way binding
+
+	- App.js
+		- nameChangeHandler = (event) => {
+		this.setState( { name: event.target.value})
+
+		}
+
+		render(){
+
+			<Person name="MJ" changed={this.nameChangeHandler}
+		}
+
+		- Person.js
+			<input onChange={props.changed} value={props.name} />
+
+### 1. Adding Custom Style Sheet
+	- Create Person.css
+
+	- Person.js
+	 - import './Person.css'
+
+### 2. INLINE CSS
+	-const style = {
+		backgroundColor: 'White',
+		font: 'inherit',
+		border : '1px solid blue'
+	}
+
+	<button style={style} .../>
+
+
+

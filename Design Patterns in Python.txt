@@ -1,0 +1,25 @@
+#Design Patterns in Python
+
+1. SOLID Design Priciple
+	- Single Responsibily Principle(SRP or SOC)
+		- Do not overload your objects with too many responsibity.(Create Separate classes for secondary tasks like saving, loading)
+		- Prevent Anti Patterns(GOD Objects means everything in one class)
+
+	- Open Closed Principle(OCP)
+		- Open for extension but closed for modification
+			- BAD WAY for filters
+				- filter_by_color
+				- filter_by_size
+				- filter_by_color_and_size
+
+			- GOOD WAY
+				- create separate class and inherit functionality
+
+	- Liskov Substitution Principle(LSP)
+
+
+	- Interface Segregation Principle
+		- Split Interface into multiple parts(print,scan,fax...)
+
+	- Dependency Inversion Principle(DIP)
+		- 

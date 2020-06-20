@@ -1,0 +1,22 @@
+Next Js
+
+- let and const
+
+- Arrow Function
+
+- Exports and Imports
+ - export default Person
+ - import prs from ./person.js
+
+ - export Utility (without default)
+ - import { Exact Name } from ./utility.js 
+ - import { person as prs } from ./utility.js
+ - import * as prs from ./utility.js
+
+- Classes
+ - constructor()
+ - super()
+
+- Spread and Rest Operators
+ - Spread - [...oldArray, 1, 2]
+ - Rest - (...args)

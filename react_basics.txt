@@ -1,0 +1,109 @@
+#React ===================
+
+#Node and NPM
+
+node --version
+nvm list
+npm install <package_name> <scope> -g
+
+npm install create-react-app    --- Full Content
+
+npx create-react-app sample-project
+
+
+#Create React App from Scratch(Manual)
+
+mkdir project
+cd project
+npm init
+
+
+## INSTALL REACT APP
+
+1. npm install -g create-react-app
+		OR
+1. npx create-react-app sample-project
+
+2. create-react-app test1 --scripts-version 1.1.5
+
+#Create React App from Scratch(Manual)
+
+mkdir project
+cd project
+npm init
+
+
+#devDependicies
+
+while development in package.json
+
+lock file is required to know what exact version is added
+
+
+#yarn
+
+same as npm
+
+yarn run(Project Commands)
+
+
+#Webpack and babel 
+
+-for JSX file
+
+babel-loader
+
+
+#props ( function)
+
+props.name
+props.children
+
+#ES6
+
+Variables ( let, const, var)
+Arrow Function
+Template Literal ( `Hello $name`)
+Use variable for the same name as key ( str : str => str)
+
+
+#Destructing
+
+name = this.state.name
+profession = this.state.profession
+
+var { name, profession } = this.state
+
+
+arr1 = [1,2,3]
+arr2 = [4,5,6]
+
+arr3=[...arr1, ...arr2] =>[1,2,3,4,5,6]
+
+arr3 = [...arrr1, arr2] => [1,2,3,[4,5,6]]
+
+
+
+#this keyword
+
+1. onClick= {this.clickHandler.bind(this)}
+2. onClick= {() => {this.clickHandler()}}
+
+3. constructor
+{
+	this.clickHandler = this.clickHandler.bind()
+}
+
+
+4. clickHandler() {
+
+	console.log(this)
+}
+
+onClick= {() => {this.clickHandler()}}
+
+
+npm install react-router-dom
+npm install --save styled-components
+
+npm install react-cookie

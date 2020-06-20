@@ -1,0 +1,122 @@
+################################################################################
+#
+#
+#				Microservices with Node.js and React
+#
+#
+#
+#################################################################################
+
+
+# HEROKU DEPLOY
+
+	git init
+	heroku create
+	git add .
+	gti remote URL
+	git commit -m "Commit"
+	git push heroku master
+
+
+#DOCKER FILE(Dockerfile)
+
+	FROM node:alpine
+	
+	WORKDIR /app
+	COPY package.json ./
+	RUN npm install
+	COPY ./ ./
+
+	CMD ["npm","start"]
+
+#.dockerignore
+	node_modules/
+
+
+# DOCKER COMMANDS
+
+	docker build -t mj/posts
+
+	docker run [image_id or image_tag]
+
+	docker run -it [image id or image tag] [cmd]  #docker run -it mj/posts sh
+
+	docker ps
+
+	docker exec -it [container id] [cmd]
+
+	docker logs [container_id]
+
+
+# KUBERNETES FILE(posts.yaml)
+
+	apiVersion: v1
+	kind: Pod
+	metadata:
+		name: posts
+	spec:
+		constainers:
+			- name: posts
+			  image: mj/posts:0.0.1   	# 0.0.1 or latest(means it goes to docker hub to search file instead of local file)
+
+
+
+# KUBERNETES COMMANDS
+
+	kubectl get pods
+
+	kubectl exec -it [pod_name] [cmd]
+
+	kubectl logs [pod_name]
+
+	kubectl delete pod [pod_name]
+
+	kubectl apply -f [config file name]
+
+	kubectl describe pod [pod_name]
+
+
+# KUBERNETES COMMANDS(DEMO)
+
+	#CREATE POD OBJECT
+		kubectl apply -f posts.yaml
+
+	#GET LIST OF PODS
+		kubectl get pods
+
+
+# KUBERNETES DEPLOYMENTS(posts-depl.yaml)
+
+	apiVersion: apps/v1
+	kind: Deployment
+	metadata:
+		name: posts-depl
+	spec:
+		replicas: 1
+		selector:
+			matchLabels:
+				app: posts
+		template:
+			metadata:
+				labels:
+					app: posts
+			spec:
+				containers:
+					- name: posts
+					  image: mj/posts:0.0.1
+
+# KUBERNETES DEPLOYMENTS COMMANDS
+
+	kubectl get deployments
+
+	kubectl get pods
+
+	kubectl delete pod [depl_name] (deploy will create new pod as soon as we delete)
+
+	kubectl describe deployment [depl_name]
+
+	kubectl apply -f [config file name]
+
+
+
+

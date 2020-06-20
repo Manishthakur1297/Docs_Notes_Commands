@@ -1,0 +1,100 @@
+Concurrent Programming(Day 13)
+
+- Parallel Computation
+- Benifits of Parallel - High Performance, Better use of resources, covenience(set of concurrent subtasks rather than one thread managing all the subtasks), fault tolerance(one machine fails than other take it)
+
+- Muliple core or processors which communicate through shared memory
+
+- Concrete Applications of Parallel Computing
+ -In JVM, GC has different thread when other thread is waiting for response
+ -Scientific Computing ( External Merge Sort, Matrix Multiplication )
+ -Web Servers and Wenb Search( Muliple Crawlers)
+ -Rendering to GUI
+
+-Two Primary Models of Parallel Computation
+ - Shared Memory Model
+ - Distributed Memory Model
+
+- Key Challenges
+ - Two Concurrent Instruction Sequences access the same address in memory
+
+
+- key Challenges Correctness
+ - Starvation(Processor needs a resource but never gets it)
+ - Deadlock(T1 aquires lock on L1 and T2 acquires lock L2, following which T1 try to acquire L2 and T2 try to acquire L1)
+ - Livelock(A Processor keeps retrying an operation that always fails like server network calls that completely fails)
+
+- Key Challenges Performance 
+
+
+- Process
+ - Any program in execution
+ - Process has its own memory(heap) and file resources
+ - Process Control Block - Heavy Weight Process with Multiple Threads
+ - Process priority, process id, process state, CPU, register
+ - They are isolated because it does not share memory
+ - More time to terminate
+ - More time in creation
+ - More time in context switching
+ - It consumes more resources
+ - Process Switching uses interface in OS
+ - If one server process is blocked, no other server process can execute until first unblocked
+
+
+- Thread
+ - Segment of process
+ - Access shared memory
+ - Light Weight Process
+ - State of Threads are Running, Ready, Blocked
+ - Less time to terminate 
+ - Less time in creation
+ - Less time for context switching
+ - It consumes less resources
+ - thread Switching does not require to call OS and cause interupt to kernel
+ - Second thread in the same task could run while first is blocked
+
+
+- Thread Leak
+ - when application does not release references of thread object
+
+- IPC
+ - Shared Memory
+ - Message Passing over Communication Channel(Pipes, API's,  RPC(Remote Procedure Calls), GRPC's)
+  - At one time only one process can bind to port 
+  - One process can bind to multiple ports
+
+
+- Multiprocessing
+ -Multiple Processes
+ - Each process has its own main memory access
+
+
+- MultiThreading
+ - Multiple Threads inside Processes
+ - Each Thread has its own stack and have shared memory of that process
+
+
+- Python Global Interpreter Lock (GIL)
+ -Single thread at a time
+
+- Locks
+ - Synchronous Activity
+ - Critical Section(Non selected threads put to sleep)
+ - Mutex Semaphore
+ - Counting Semaphore
+
+
+
+-------------------
+
+- Reader Writer Problem
+- Producer Consumer Problem
+
+- Database
+ - Centralised Database - Single Server to Store all data
+  - Problems
+   - Hard Drive Crash
+   - Overloading of data
+   - Increase the response time
+ 
+ - Distributed Database - Multiple Servers to store data

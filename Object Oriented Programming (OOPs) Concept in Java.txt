@@ -1,0 +1,83 @@
+Object Oriented Programming (OOPs) Concept in Java
+
+- It aims to implement real-world entities like inheritance, hiding, polymorphism etc in programming.
+- The main aim of OOP is to bind together the data and the functions that operate on them so that no other part of the code can access this data except that function.
+- Decomposition of the problem into simpler modules.
+- Emphasis is on data rather than procedure.
+- Data is protected from external functions.
+- Doesn’t allow data to freely flow in the entire system, ie localized control flow.
+
+
+ - OOPs Concepts
+
+  - Polymorphism
+   - It refers to the ability of OOPs programming languages to differentiate between entities with the same name efficiently.
+   
+   - Types
+
+    - Static Polumorphism (Overloading)
+     - Overloading allows different methods to have the same name, but different signatures where the signature can differ by the number of input parameters or type of input 	parameters or both.
+
+    - Runtime Polymorphism (Overriding)
+     - Overriding is a feature that allows a subclass or child class to provide a specific implementation of a method that is already provided by one of its super-classes or 	parent classes.
+     - When a method in a subclass has the same name, same parameters or signature and same return type(or sub-type) as a method in its super-class, then the method in the 	subclass is said to override the method in the super-class.
+
+
+  - Inheritence
+   - It is the mechanism in java by which one class is allow to inherit the features(fields and methods) of another class.
+   - Reusability
+
+
+  - Encapsulation
+   - Encapsulation is defined as the wrapping up of data under a single unit.
+   - It is the mechanism that binds together code and the data it manipulates.
+   - It is a protective shield that prevents the data from being accessed by the code outside this shield. 
+   - It can be achieved by Declaring all the variables in the class as private and writing public methods in the class to set and get the values of variables.
+
+
+  - Abstraction
+   - Data Abstraction is the property by virtue of which only the essential details are displayed to the user.
+   - Ex: A car is viewed as a car rather than its individual components.
+   - Data Abstraction may also be defined as the process of identifying only the required characteristics of an object ignoring the irrelevant details.
+   - Data abstraction simplifies database design:
+    - Physical View - How data is stored
+    - Logical View - What data is stored
+    - User View Level - Details are shown to user
+
+
+  - Class
+   - A class is a user defined blueprint or prototype from which objects are created.
+   - It represents the set of properties or methods that are common to all objects of one type.
+
+
+  -Object
+   - It is a basic unit of Object Oriented Programming and represents the real life entities.
+   - An object consists of: State(Attributes like color,age), Behaviour(Sleep,eat) and Identity(name).
+
+
+  - Method
+   - A method is a collection of statements that perform some specific task and return result to the caller.
+   - Methods allow us to reuse the code without retyping the code.
+   - Components : Access Modifier, Return Type, Method Name, Parameter List, Exception List, Method Body
+
+
+  - Message Passing
+   - A message for an object is a request for execution of a procedure and therefore will invoke a function in the receiving object that generates the desired results.
+   - Message passing involves specifying the name of the object, the name of the function and the information to be sent. 
+
+- Advantages of OOP's
+ - It models the real world very well.
+ - With OOP, programs are easy to understand and maintain.
+ - OOP offers code reusability. Already created classes can be reused without having to write them again.
+ - OOP facilitates the quick development of programs where parallel development of classes is possible.
+ - With OOP, programs are easier to test, manage and debug.
+
+- Disadvantages of OOP's
+ - With OOP, classes sometimes tend be over-generalised.
+ - The relations among classes become superficial at times.
+ - The OOP design is tricky and requires appropriate knowledge. Also, one needs to do proper planning and design for OOP programming.
+ - To program with OOP, the programmer needs proper skills such as that of design, programming and thinking in terms of objects and classes etc.
+
+
+
+

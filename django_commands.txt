@@ -1,0 +1,229 @@
+#Install python from official site first.
+
+curl -sL https://raw.githubusercontent.com/Manishthakur1297/Healthify_sqlite/master/deploy/setup.sh | sudo bash -
+
+#UPGRADE PIP
+
+wget https://bootstrap.pypa.io/get-pip.py -O ./get-pip.py
+#python ./get-pip.py
+python3 ./get-pip.py
+
+
+
+#Install Virtual Environment
+
+#MAC
+ - python3 -m venv venv
+ - source venv/bin/activate
+
+#Windows
+ - python -m venv venv
+ - venv\Scripts\activate
+ - pip install Django
+
+
+#Create First Django Project
+ - django-admin startproject first .
+
+
+ #Upgrade All Outdated Packages
+ - pip install pip-review
+ - pip-review --local --interactive
+
+#Run Django Project
+ - python manage.py runserver
+
+#Create Application in our project
+ - django-admin startapp demo
+
+
+#Adding Migrations to Databases
+ - python manage.py migrate
+
+
+#Add demo App inside INSTALLED_APPS LIST in project "first" settings.py
+
+#Apply New Migrations Changes
+ - python manage.py makemigrations
+
+#Apply New migration to database
+ - python manage.py migrate
+
+#User and Admin
+ - python manage.py createsuperuser
+
+
+# Model in Django
+ - from django.db import models
+ 
+ - title = models.CharField(max_length = 36, null=True, blank=False, unique = True, default = '', choices = BOOKS)
+
+
+#Models Fields
+ - models.CharField(max_length=36)
+ - models.TextField(max_length=256)
+
+ - models.IntegerField(default=0)
+ - models.BigIntegerField(default=0)
+ - models.DecimalField(default=0, decimal_places=0,max_digits=0)
+ - models.FloatField(default=0)
+
+ - models.DateField(auto_now=True, auto_now_add=True)
+ - models.TimeField(auto_now=True, auto_now_add=True)
+ - models.DateTimeField(auto_now=True, auto_now_add=True)
+
+ - models.FileField(auto_now=True, auto_now_add=True)
+ - models.FilePathField(auto_now=True, auto_nowo_now_add=True)
+
+#Reflect Changes
+ - python manage.py makemigrations
+
+#Apply New migration to database
+ - python manage.py migrate
+
+
+#url.py (Add Route from views.py)
+ - path('home' views.home, name='home')
+
+#Class View
+
+from django.views import View
+class Another(View):
+	
+	def get(self, request):
+		return HttpResponse('This is Another func')
+ 
+ -  from .views import Another
+ - path('another', Another.as_view())
+
+
+#Model Object Methods
+
+  - Book.objects.all()
+  - Book.objects.filter(is_published=True)
+  - Book.objects.get(id = 1)
+
+
+#Templates
+ - setting.py
+  - TEMPLATES -> DIRS -> ['templates'] 
+ - from django.shortcuts import render
+ - return render(request, 'first_temp.html')
+
+#Dynamic Templates
+ - render(request, 'page.html', {'data' : 'this is data'})
+
+ - HTML Page -> 
+  - <h2> {{ books }} </h2>
+  - {%  for book in books %}
+  		{{ book.title }}
+  - {% endfor %} 
+
+#REST FRAMEWORK
+ - pip install djangorestframework
+ 
+ - setting.py
+ -INSTALLED_APPS -> 'rest_framework'
+
+#SERIALIZERS
+ - new file serializers.py
+ 
+ - from rest_framework import serializers
+ - class BookSerializer(serializers.ModelSerializer):
+
+ - from rest_framework import viewsets
+ - class BookViewSet(viewsets.ModelViewSet)
+
+ - from rest_framework import routers
+ - router = routers.DefaultRouter()
+ - router.register('books',BookViewSet)
+
+
+- setting.py
+ -INSTALLED_APPS -> 'rest_framework.authtoken'
+
+
+- setting.py
+ - Create new REST_FRAMEWORK{
+
+	 'DEFAULT_PERMISSION_CLASSES': (
+
+	 	'rest_framework.permissions.IsAuthenticated'
+	 )
+  }
+
+
+//MONGO DB
+
+MONGODB_DATABASES = {
+    "default": {
+        "name": 'testdb',
+        "host": '127.0.0.1',
+        "port": 27017,
+        "tz_aware": True,
+    },
+}
+
+INSTALLED_APPS += ["django_mongoengine"]
+
+
+
+
+
+#===============================PIP INSTALLS=====================
+
+pip install djangorestframework
+django-admin startproject customuser .
+python manage.py startapp users
+
+pip install django-allauth
+pip install django-rest-auth
+
+
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+    'users',
+    ...
+]
+
+
+
+================Requirements.txt=-=====
+
+pip install Django
+pip install djangorestframework
+pip install django-allauth
+pip install django-rest-auth
+pip install django-cors-headers
+
+pip3 install django-rest-framework-mongoengine
+pip3 install pymongo
+pip3 install mongoengine
+
+//Complete
+
+pip3 install Django djangorestframework django-allauth django-rest-auth django-cors-headers
+
+pip install django-rest-framework-mongoengine pymongo mongoengine django_mongoengine
+
+
+//--------------
+
+Django
+djangorestframework
+django-allauth
+django-rest-auth
+django-cors-headers
+django-rest-framework-mongoengine
+pymongo
+mongoengine
+django_mongoengine
+
+djangorestframework-simplejwt

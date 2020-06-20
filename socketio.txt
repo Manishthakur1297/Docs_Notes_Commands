@@ -1,0 +1,30 @@
+# Socket.io
+
+const express = require('express')
+const http = require('http')
+const socketio = require('socket.io')
+
+const app = express()
+const server = http.createServer(app)
+const io = socketio(server)
+
+
+#DEFAULT BUILT IN
+- io.on("connection", socket=> {
+	
+})
+
+#DEFAULT BUILT IN
+- socket.on("disconnect", ()=> {
+	io.emit()
+})
+
+
+#CUSTOM
+- socket.emit("message", message)
+- socket.on("mesaage1", msg=> {
+	//console msg
+})
+- io.emit("msg", msg, (callback)=> {
+	//ACK
+})
