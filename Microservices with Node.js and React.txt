@@ -8,7 +8,7 @@
 #################################################################################
 
 
-# HEROKU DEPLOY
+################################ HEROKU DEPLOYMENT ############################## 
 
 	git init
 	heroku create
@@ -18,7 +18,9 @@
 	git push heroku master
 
 
-#DOCKER FILE(Dockerfile)
+############################### DOCKER SECTION ##################################
+
+# DOCKER FILE(Dockerfile)
 
 	FROM node:alpine
 	
@@ -29,7 +31,7 @@
 
 	CMD ["npm","start"]
 
-#.dockerignore
+# .dockerignore
 	node_modules/
 
 
@@ -47,6 +49,9 @@
 
 	docker logs [container_id]
 
+
+
+############################### KUBERNETES SECTION ##############################
 
 # KUBERNETES FILE(posts.yaml)
 
@@ -116,6 +121,75 @@
 	kubectl describe deployment [depl_name]
 
 	kubectl apply -f [config file name]
+
+
+
+# KUBERNETES UPDATE DEPLOYMENTS
+
+	METHOD #1: (NOT Widely Used)
+		- MAke a change to the project
+		- Rebuild the image, specifying new version (docker build -t mj/posts:0.0.5 .)
+		- Update version of image in deployment config file
+		- RUN Command - kubectl apply -f [depl file name]
+
+	METHOD #2: (Prefered Way to Update Deployments)
+		- Deployment must be using "latest" tag in Pod spec section ()
+		- Make an update to the code files
+		- Rebuild the image without specifying new version (docker build -t mj/posts .)
+		- Push to DockerHub -> RUN Command -> [ docker push mj/posts ]
+		- RUN Command -> [ kubectl rollout restart deployment [depl name] ]
+
+	- TO VERIFY COMMANDS
+		- kubectl get deployments
+		- kubectl get pods(timestamp)
+		- kubectl logs [depl_name]
+
+
+# KUBERNETES - NETWORKING WITH SERVICES
+
+	# TYPES OF SERVICES
+		1. CLUSTER IP (Generally Used) (INSIDE CLUSTER)
+			- Easy to remember URL to access a pod
+			- Only EXPOSES PODS in the CLUSTER
+
+		2. NODE PORT
+			- Makes a POD accessible from outside the cluster
+			- ONLY used for DEV PURPOSES
+
+		3. LOAD BALANCER (Generally Used) (OUTSIDE CLUSTER)
+			- Makes a POD accessible from outside the cluster
+			- Right way to expose POD to the outside world
+
+		4. EXTERNAL NAME (ADVANCED or complex)
+			- Redirects are in-cluster request to a CNAME URL
+
+
+	1. NODEPORT SERVICE FILE(posts-srv.yaml) [DEVELOPMENT PURPOSE]
+
+		apiVersion: v1
+		kind: Service
+		metadata:
+			name: posts-srv
+		spec:
+			type: NodePort
+			selector:
+				app: posts
+			ports:
+				- name: posts
+				  protocol: TCP
+				  port: 4000
+				  targetPort: 4000
+
+		
+		- kubectl apply -f posts-srv.yaml
+
+		- kubectl get services
+
+		- kubectl describe service posts-srv
+
+
+
+
 
 
 
