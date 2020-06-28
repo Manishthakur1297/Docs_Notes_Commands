@@ -1,0 +1,390 @@
+#############################################################
+#
+#
+#
+#
+#						JAVASCRIPT
+#
+#
+#
+#
+#############################################################
+
+
+# Chapter 1. Introduction ###################################
+	
+	# Logging Output
+		- console.log(document.body);
+
+	# Using the DOM API
+
+		# textContent Property
+			- <p id="paragraph"></p>
+			- document.getElementById("paragraph").textContent = "Hello, World";
+
+		# Create a new HTML Tag Programatically
+			- var element = document.createElement('p');
+			- element.textContent = "Hello, World";
+			- document.body.appendChild(element); //add the newly created element to the DOM
+
+		# No JS code will execute until Alert is dismissed
+			- alert('Pause!');
+			- console.log('Alert was dismissed');
+
+		# Take input from USER
+			- prompt(text, [default]) -> return String if OK otherwise null
+
+			- window.confirm(message) -> Boolean Value
+
+		# Canvas, SVG or Image File
+			- Later
+
+
+
+# CHAPTER 2. Javascript variables ###############################
+
+	# Declare variable
+		- var num = 3
+
+	# Types
+		- 32-bit, 64-bit, decimal, boolean, NaN, undefined, null
+
+	# Arrays and Objects
+		- var array = []
+		- var randomVariables = [2, "any type works", undefined, null, true, 2.51]
+
+		- myObject = {}
+		- john = {firstname: "John", lastname: "Doe", fullname: "John Doe"}
+
+
+
+# CHAPTER 3. Built-in Constants #################################
+
+	# null vs undefined
+		- null == undefined; // true
+		- null === undefined; // false
+
+		- Unlike undefined, it is not a property of the global object.
+
+		- CAREFUL: The typeof null is 'object'.
+
+		- window.isNaN()
+			- Number.isNaN(NaN); // true -> (only)
+			- Number.isNaN(1); // false
+
+			- 0 / 0 // NaN
+
+		- undefined is a global value that represents the absence of an assigned value.
+			- typeof undefined === 'undefined'
+
+		- null is an object that indicates that a variable has been explicitly assigned "no value".
+			- typeof null === 'object'
+
+
+	# Numbers
+		- Infinity and -Infinity
+
+		- Number.MAX_VALUE
+		- Number.MIN_VALUE
+		- Number.POSITIVE_INFINITY
+		- Number.NEGATIVE_INFINITY
+
+
+
+# CHAPTER 4. COMMENTS ###############################################
+
+	# Single line comment
+		- //
+
+	# Multi-line Comment
+		- /**/
+
+
+
+# CHAPTER 5. CONSOLE ###############################################
+
+	# Methods of consoleJavascript code
+		- console.dir(console)
+
+	# Measuring time
+		- console.time('response in');
+
+		- alert('Click to continue');
+		- console.timeEnd('response in');
+		
+		- alert('One more time');
+		- console.timeEnd('response in');
+
+
+	# Formatting Console Output
+		- console.log('%s has %d points', 'Sam', 100);
+
+		# Advanced styling (%c)
+			- console.log('%cHello world!', 'color: blue; font-size: xx-large');
+
+			- console.log("%cHello %cWorld%c!!", // string to be printed
+			  "color: blue;", // applies color formatting to the 1st substring
+			  "font-size: xx-large;", // applies font formatting to the 2nd substring
+			  "/* no CSS rule*/" // does not apply any rule to the remaining substring
+			  )
+
+	# Print Methods
+		- console.log()
+		- console.info()
+		- console.warn()
+		- console.error()
+		- console.timestamp()
+		- console.trace()
+
+
+	# Tabulating Values
+		- console.table(['Hello', 'World'])
+		- (index) 	value
+		  	0 		"Hello"
+		  	1 		"world"
+
+
+	# Counting
+		- console.count()
+
+		- INPUT
+			var o1 = 1, o2 = '2', o3 = "";
+			console.count(o1);
+			console.count(o2);
+			console.count(o3);
+			console.count(1);
+			console.count('2');
+			console.count('');
+		
+		- OUTPUT
+			1: 1
+			2: 1
+			: 1
+			1: 2
+			2: 2
+			: 1
+
+	# CLEAR CONSOLE
+		- console.clear()
+
+
+	# DISPLAY INTERACTIVE LIST OF JS OBJECT
+		- console.dir(object)
+		- console.dirxml(object)
+
+
+	# Debugging with Assertions
+		- console.assert()
+
+
+
+# CHAPTER 6. Datatypes in Javascript ################################################
+
+	# typeof
+		- get the type of JS
+		- typeof "String" or 32 or true or undefined ...
+
+	# instanceof
+		- console.log([] instanceof Object, [] instanceof Array) //true true
+		- console.log([].constructor === Object, [].constructor === Array) //false true
+
+		- console.log(2 instanceof Number) //false
+		- console.log('abc' instanceof String) //false
+
+	# Getting object type by constructor name
+		- Object.prototype.toString.call("String")  // "[object String]"
+		- Object.prototype.toString.call(42)  // "[object Number]"
+
+
+
+# CHAPTER 7. STRINGS  ###############################################################
+
+	# Create String
+		- var intString = String(32); // "32"
+		- var booleanString = String(true); // "true"
+		- var nullString = String(null); // "null"
+
+		- String.fromCharCode(104,101,108,108,111) //"hello"
+
+
+	# Convert to Strings
+		- var intString = (5232).toString(); // "5232"
+		- var booleanString = (false).toString(); // "false"
+		- var objString = ({}).toString(); // "[object Object]"
+
+
+	# Create String using new (NOT Recommended)
+		- var objectString = new String("Yes, I am a String object");
+		- typeof objectString;//"object"
+		- typeof objectString.valueOf();//"string"
+
+	# String Concatenation
+		- var foo = "Foo";
+		- var bar = "Bar";
+		- console.log(foo + bar);
+
+		- foo.concat(bar)
+
+	# String Templates
+		- var place = `World`;
+		- var greet = `Hello ${place}!`
+
+		- String.raw`a\\b` // = a\\b
+
+	# Reverse String
+
+		- 'string'.split('').reverse().join(''); // "gnirts" 
+
+		- '?????.'.split('').reverse().join(''); //fails
+
+		# Correct WAY
+
+			- function reverseString(str) {
+				return [...String(str)].reverse().join('');
+			  }
+
+	# Comparing Strings Lexicographically
+		- console.log(a.localeCompare(b)); // -1
+
+		- console.log(strcmp("hello", "world")); // -1
+
+
+	# Access character at index in string
+		- string.charAt(4)
+
+		- string[4]
+
+		- console.log( string.charCodeAt(4) ); // 111
+
+	# Trim whitespace
+		- " some whitespaced string ".trim();
+
+		- " this is me ".trimLeft(); // "this is me "
+		- " this is me ".trimRight(); // " this is me"
+
+	# Split a string into array
+		- s.split(", "); // ["one", "two", "three", "four", "five"]
+
+		- s.split(", ").join("--"); // "one--two--three--four--five"
+
+
+	# Substrings with slice
+		- var s = "0123456789abcdefg";
+		  s.slice(0, 5); // "01234"
+
+
+	# String Representations of Numbers
+		-   // base 10 Number
+			var b10 = 12;
+
+			// base 16 String representation
+			var b16 = b10.toString(16); // "c"
+
+
+		- 	// base 16 String representation
+			var b16 = 'c';
+
+			// base 10 Number
+			var b10 = parseInt(b16, 16); // 12
+
+	# String Find and Replace Functions
+		- string.indexOf("o")
+
+		- string.lastIndexOf("o")
+
+		- string.includes("Hello")
+
+		- string.replace( "Hello", "Bye" );
+
+		- "harr dee harr dee harr".indexOf("dee", 10); // 14
+
+		- console.log('qwerty'.toUpperCase()); // 'QWERTY'
+
+		- console.log('QWERTY'.toLowerCase()); // 'qwerty'
+
+		- "abc".repeat(3); // Returns "abcabcabc"
+		- "abc".repeat(0); // Returns ""
+		- "abc".repeat(-1); // Throws a RangeError
+
+		- var myString = "abc";
+		  var n = 3;
+	 	  new Array(n + 1).join(myString); // Returns "abcabcabc"
+
+
+# CHAPTER 8. DATE ###################################################
+
+	- Date() creates a Date instance containing the current time (up to milliseconds) and date.
+
+	- new Date(749019369738) gives the date Sun, 26 Sep 1993 04:56:09GMT
+
+	- new Date(2017, 5, 1) gives June 1st, 2017
+
+	- new Date(0).toISOString() === '1970-01-01T00:00:00.000Z'
+
+	- new Date(2012, 0).toString() === 'Sun Jan 01 2012 00:00:00 GMT-0600 (Central Standard Time)'
+
+	# Convert to a string format
+		- var date1 = new Date();
+
+		- date1.toString();
+
+		- date1.toTimeString();
+
+		- date1.toDateString();
+
+		- date1.toUTCString();
+
+		- date1.toISOString();
+
+		- date1.toGMTString();
+
+		- date1.toLocaleDateString();
+
+		- var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+		  date1.toLocaleDateString([], options);
+
+	# LATER ----------------------------
+
+
+# CHAPTER 9. Date Comparison###########################################################
+
+	- var date1 = new Date();
+	  var date2 = new Date(date1.valueOf() + 10);
+	  console.log(date1.valueOf() === date2.valueOf());
+
+	- console.log(date1 <= date2);
+
+
+
+# CAHPTER 10. Comparison Operators #####################################################
+
+	Later ---------------------------------
+
+
+
+# CHAPTER 11. CONDITIONS ###################################################################
+
+	# Ternary Operator
+		var animal = 'kitty';
+		var result = (animal === 'kitty') ? 'cute' : 'still nice';
+
+	# Switch Statement
+
+	# Strategy
+		- abc() => {
+		
+		}
+		- default() {
+			.....
+		}
+
+
+
+
+
+
+
+
+
+
+

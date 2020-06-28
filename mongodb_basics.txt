@@ -50,18 +50,164 @@
 	- aggregate( [ {$lookup: {from: "authors", localField: "authors", foreignField: "_id", as: "Createors"}} ])
 
 
-
-
-
-
-
-
 ------------
 
 ## Aggregation Queries
 
 	- mongoimport persons.json -d analytics -c persons --jsonArray
 	
+
+
+
+##################################### MONGOOSE SCHEMA DATATYPES #######################################
+
+
+1. GEOSPATIAL DATA ===================================
+
+
+	{
+
+		.... ,
+
+		locations: [
+			{
+				type: {
+					type: String,
+					default: 'Point',
+					enum: ['Point']
+				},
+				coordinates: [Number],
+				address: String,
+				description: String,
+				day: Number
+			}
+		],
+
+		guides: [
+			{
+				type: mongoose.Schema.ObjectId,
+				res: 'User'
+			}
+
+		],
+
+		....
+
+	},
+
+	{
+		toJSON: { virtuals : true },                    // Virtual Properties
+		toObject: { virtuals: true }
+	}
+
+	};
+
+
+
+################################### VIRTUALS DATA #################################
+
+
+		tourSchema.virtual('durationWeeks').get(function() {
+			return this.duration / 7;
+		})
+
+
+###################################### MIDDLEWARE #########################################
+
+
+############### PRE MIDDLEWARE #######################################
+
+
+	1. DOCUMENT MIDDLEWRE #####################################
+
+		tourSchema.pre('save, function(next) {
+			this.slug = slugify(this.name, { lower : true });
+
+			next();
+		})
+
+
+
+
+	2. QUERY MIDDLEWRE #####################################
+
+		tourSchema.pre(/^find/, function(next) {
+			this.find({secretTour: { $ne : true }})
+
+			this.start = Date.now()
+
+			next();
+		})
+
+
+
+		// When you want to populate all your documents go for middleware instead of inside function
+
+		tourSchema.pre(/^find/, function(next) {
+			this.populate({
+				path : 'guides',
+				select : '-__v -passwordChangedAt'
+			})
+
+			next()
+		})
+
+
+
+
+
+	3. AGGREGATE MIDDLEWARE #################################
+
+		tourSchema.pre('aggregate, function(next) {
+			this.pipeline().unshift({$match : { secretTour: { $ne : true }}})
+
+			console.log(this.pipeline())
+
+			next();
+		})
+
+
+	
+
+
+
+############### POST MIDDLEWARE
+
+	tourSchema.post(/^find/, function(docs,next) {
+		console.log('Query took ${Date.now()-this.start} milliseconds!')
+
+		next();
+	})
+
+
+
+
+
+
+############################################## Queries Example ################################################
+
+
+	- Populate Reference Object ID with actual data
+
+			Tour.findById(req.params.id).populate({
+				path: 'guides',
+				select: '-__v -passwordChangedAt'
+			})
+
+
+
+############################################# NESTED ROUTES WITH EXPRESS #################################
+
+- reviewRoutes.js
+
+	const router = epress.Router( { mergeParams: true })
+
+- tourRoutes.js
+	
+	router.use('/:tourId/reviews', reviewRouter)
+
+
+
 
 
 

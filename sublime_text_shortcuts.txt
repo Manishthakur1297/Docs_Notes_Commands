@@ -1,0 +1,60 @@
+Here are ten handy Sublime Text shortcuts:
+
+Close current HTML tag
+Windows: Alt .
+
+Mac: ⌥ .
+
+Command prompt
+
+Windows: Ctrl Shift P
+
+Mac: ⌘ ⇧ P
+
+Comment/un-comment current line
+
+Windows: Ctrl /  
+
+Mac: ⌘ /
+
+Duplicate line(s)
+
+Windows: Ctrl Shift D
+
+Mac: ⌘ ⇧ D
+
+Go to word in current file
+
+Windows: Ctrl ;
+
+Mac: ⌘ ;
+
+Go to line in current file
+
+Windows: Ctrl G
+
+Mac: ⌘ G
+
+Quick-open files by name
+
+Windows: Ctrl P
+
+Mac: ⌘ P
+
+Replace
+
+Windows: Ctrl H
+
+Mac: ⌘ H
+
+Select word
+
+Windows: Ctrl D
+
+Mac: ⌘ D
+
+Toggle side bar
+
+Windows: Ctrl KB
+
+Mac: ⌘ KB
